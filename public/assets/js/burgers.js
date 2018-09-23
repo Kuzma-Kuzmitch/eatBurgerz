@@ -21,15 +21,14 @@ $(".create-form").on("submit", function(event) {
 
 $(".change-devour").on("click", function(event) {
   var id = $(this).data("id");
-  var newDevour = $(this).data("newdevour");
 
-  var newDevourState = {
-    Devoured: newDevour
+  var newDevour = {
+    devoured: 0
   };
 
   $.ajax("/api/burgers/" + id, {
     type: "PUT",
-    data: newDevourState
+    data: newDevour
   }).then(
     function() {
       console.log("changed sleep to", newDevour);
